@@ -2,12 +2,14 @@
 
 import axios from "axios";
 
+// Define the Evolution interface
 interface Evolution {
   id: number;
   name: string;
   image: string;
 }
 
+// Fetch the evolution of a pokemon by id
 const useGetOnePokemonEvolutions = async (
   evolutionId: number
 ): Promise<Evolution> => {

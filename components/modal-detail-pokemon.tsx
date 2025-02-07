@@ -1,3 +1,5 @@
+// Description: This component is used to display the details of a pokemon in a modal.
+
 import React, { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import useGetOnePokemonEvolutions from "../interface/fetchPokemonEvolution";
@@ -24,6 +26,7 @@ export default function DetailsPokemon({ id }: { id: string }) {
     image: string;
   }
 
+  // Fetch the details of a pokemon with the id passed in parameter
   useEffect(() => {
     const fetchDetailsPokemon = async () => {
       const response = await fetch(
@@ -35,6 +38,7 @@ export default function DetailsPokemon({ id }: { id: string }) {
     fetchDetailsPokemon();
   }, [id]);
 
+  // Fetch the evolution of a pokemon
   useEffect(() => {
     const fetchPokemonEvolutions = async () => {
       if (
@@ -53,6 +57,7 @@ export default function DetailsPokemon({ id }: { id: string }) {
     fetchPokemonEvolutions();
   }, [pokemon]);
 
+  // Fetch the pre-evolution of a pokemon
   useEffect(() => {
     const fetchPokemonPreEvolution = async () => {
       if (
@@ -70,8 +75,10 @@ export default function DetailsPokemon({ id }: { id: string }) {
     fetchPokemonPreEvolution();
   }, [pokemon]);
 
+  // If the details of the pokemon are not loaded, return null
   if (!detailsPokemon) return null;
 
+  // Display the details of the pokemon
   return (
     <View>
       <View>
@@ -140,6 +147,7 @@ export default function DetailsPokemon({ id }: { id: string }) {
   );
 }
 
+// Styles
 const styles = StyleSheet.create({
   globalStats: {
     alignItems: "center",

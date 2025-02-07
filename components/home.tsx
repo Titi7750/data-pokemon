@@ -1,3 +1,6 @@
+// Description: This file contains the home component which is the main component of the application.
+// It displays a list of pokemons and allows the user to see the details of each pokemon by clicking on it.
+
 import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
@@ -18,6 +21,7 @@ export default function Home() {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedPokemonId, setSelectedPokemonId] = useState("");
 
+  // Fetch the first 10 pokemons
   useEffect(() => {
     const fetchPokemon = async () => {
       const response = await fetch(
@@ -29,6 +33,7 @@ export default function Home() {
     fetchPokemon();
   }, []);
 
+  // Fetch more pokemons when the user scrolls to the end of the list
   const fetchMoreData = async () => {
     const response = await fetch(
       `https://pokebuildapi.fr/api/v1/pokemon/limit/${pokemon.length + 10}`
@@ -37,6 +42,7 @@ export default function Home() {
     setPokemon(data);
   };
 
+  // Render each pokemon in a card
   const renderPokemon = ({ item }: { item: any }) => {
     return (
       <View style={styles.container}>
@@ -59,6 +65,7 @@ export default function Home() {
     );
   };
 
+  // Loader to show when fetching more pokemons
   const renderLoader = () => {
     return (
       <View style={styles.loader}>
@@ -97,6 +104,7 @@ export default function Home() {
     );
   };
 
+  // Render the list of pokemons
   return (
     <View style={{ flex: 1 }}>
       <FlatList
@@ -113,6 +121,7 @@ export default function Home() {
   );
 }
 
+// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -2,6 +2,7 @@
 
 import axios from "axios";
 
+// Define the PreEvolution interface
 interface PreEvolution {
   id: number;
   name: string;
@@ -9,6 +10,7 @@ interface PreEvolution {
   image: string;
 }
 
+// Fetch the pre-evolution of a pokemon by id
 const useGetOnePokemonPreEvolutions = async (
   prevEvolutionId: number
 ): Promise<PreEvolution> => {
